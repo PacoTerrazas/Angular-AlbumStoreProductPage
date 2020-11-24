@@ -11,10 +11,18 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var product_page_component_1 = require("./product-page/product-page.component");
 var product_description_component_1 = require("./product-description/product-description.component");
 var product_service_1 = require("./product.service");
+var product_tracklisting_component_1 = require("./product-tracklisting/product-tracklisting.component");
+var product_list_component_1 = require("./product-list/product-list.component");
+var appRoutes = [
+    { path: 'products', component: product_list_component_1.ProductListComponent },
+    { path: 'product/:id', component: product_page_component_1.ProductPageComponent },
+    { path: '', redirectTo: 'products', pathMatch: 'full' }
+];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -23,12 +31,15 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 product_page_component_1.ProductPageComponent,
-                product_description_component_1.ProductDescriptionComponent
+                product_description_component_1.ProductDescriptionComponent,
+                product_tracklisting_component_1.ProductTracklistingComponent,
+                product_list_component_1.ProductListComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                http_1.HttpModule
+                http_1.HttpModule,
+                router_1.RouterModule.forRoot(appRoutes)
             ],
             providers: [
                 product_service_1.ProductService

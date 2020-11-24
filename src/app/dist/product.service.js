@@ -13,9 +13,13 @@ var ProductService = /** @class */ (function () {
     function ProductService(_http) {
         this._http = _http;
         this._albumUrl = '../assets/album.json';
+        this._productsUrl = '../assets/products.json';
     }
     ProductService.prototype.getAlbum = function (id) {
         return this._http.get(this._albumUrl).map(function (response) { return response.json(); });
+    };
+    ProductService.prototype.getProducts = function () {
+        return this._http.get(this._productsUrl).map(function (response) { return response.json(); });
     };
     ProductService = __decorate([
         core_1.Injectable()
